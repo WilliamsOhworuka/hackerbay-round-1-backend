@@ -1,5 +1,7 @@
-import signin from './signin';
+import signinController from './signin.controller';
+import thumbnailController from './thumbnail.controller';
 
 export default {
-  signin,
+  signinController,
+  thumbnailController,
 };

@@ -1,11 +1,22 @@
 import generateToken from './generateToken';
-import validation from './validation';
+import { loginSchema, thumbnailSchema } from './validationSchema';
 import getToken from './getToken';
-import logger from './logger';
+import checkMime from './checkUrl';
+import logger, {
+  log, info, verbose, warn, debug, error,
+} from './logger';
 
 export default {
   generateToken,
   getToken,
-  validation,
+  loginSchema,
+  thumbnailSchema,
   logger,
+  log,
+  info,
+  verbose,
+  warn,
+  debug,
+  error,
+  checkMime,
 };

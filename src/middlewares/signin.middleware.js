@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import helpers from '../helpers';
 
-const { getToken, validation } = helpers;
+const { getToken, loginSchema } = helpers;
 
 /**
  * This callback type is called `next` it calls the next middleware in the stack.
@@ -25,7 +25,7 @@ export const validateSignin = async (req, res, next) => {
   };
 
   try {
-    await validation.validate(payload);
+    await loginSchema.validate(payload);
     return next();
   } catch (error) {
     return error.name === 'ValidationError'

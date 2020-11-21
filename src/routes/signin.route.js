@@ -5,8 +5,8 @@ import controllers from '../controllers';
 const route = Router();
 
 const { validateSignin } = middlewares;
-const { signin } = controllers;
+const { signinController } = controllers;
 
-route.post('/signin', validateSignin, signin);
+route.post('/signin', validateSignin, signinController);
 
 export default route;
