@@ -4,7 +4,7 @@
   "description": "",
   "main": ".src/app.js",
   "scripts": {
-    "test": "nyc --reporter=text mocha tests/*.js --require @babel/register --timeout 20000 --exit",
+    "test": "nyc --reporter=text --reporter=html mocha tests/*.js --require @babel/register --timeout 20000 --exit",
     "start": "babel-node ./src/app.js",
     "lint": "./node_modules/.bin/eslint --fix ./src"
   },
@@ -38,6 +38,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "mocha": "^8.2.1",
-    "nyc": "^15.1.0"
+    "nyc": "^15.1.0",
+    "sinon": "^9.2.1"
   }
 }

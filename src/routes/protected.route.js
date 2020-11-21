@@ -4,9 +4,11 @@ import controllers from '../controllers';
 
 const route = Router();
 
-const { checkAuthentication, validateThumbnailUrl } = middlewares;
-const { thumbnailController } = controllers;
+const { checkAuthentication, validateThumbnailUrl, validateJsonPatch } = middlewares;
+const { thumbnailController, jsonPatchController } = controllers;
 
-route.post('/resize', validateThumbnailUrl, checkAuthentication, thumbnailController);
+route
+  .post('/resize-thumbnail', checkAuthentication, validateThumbnailUrl, thumbnailController)
+  .post('/patch-json', checkAuthentication, validateJsonPatch, jsonPatchController);
 
 export default route;

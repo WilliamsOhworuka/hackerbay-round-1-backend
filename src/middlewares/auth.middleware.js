@@ -28,15 +28,10 @@ export const validateSignin = async (req, res, next) => {
     await loginSchema.validate(payload);
     return next();
   } catch (error) {
-    return error.name === 'ValidationError'
-      ? res.status(400).json({
-        status: 400,
-        errors: error.errors,
-      })
-      : res.status(500).json({
-        status: 500,
-        error: error.message,
-      });
+    return res.status(400).json({
+      status: 400,
+      errors: error.errors,
+    });
   }
 };
 
@@ -52,7 +47,7 @@ export const checkAuthentication = (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization) {
-    return res.json(401).json({
+    return res.status(401).json({
       status: 401,
       error: 'you are not logged in',
     });
@@ -65,7 +60,7 @@ export const checkAuthentication = (req, res, next) => {
 
     return next();
   } catch (error) {
-    return req.status(401).json({
+    return res.status(401).json({
       status: 401,
       error: 'you are not logged in',
     });

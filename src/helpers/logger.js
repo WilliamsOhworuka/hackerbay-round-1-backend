@@ -17,10 +17,9 @@ const getStackInfo = (stackIndex) => {
   const stacklist = (new Error()).stack.split('\n').slice(3);
   // this code is from google code
   const stackReg = /at\s+(.*)\s+\((.*):(\d*):(\d*)\)/gi;
-  const stackReg2 = /at\s+()(.*):(\d*):(\d*)/gi;
 
-  const s = stacklist[stackIndex] || stacklist[0];
-  const sp = stackReg.exec(s) || stackReg2.exec(s);
+  const s = stacklist[stackIndex];
+  const sp = stackReg.exec(s);
 
   if (sp && sp.length === 5) {
     return {
@@ -31,7 +30,6 @@ const getStackInfo = (stackIndex) => {
       stack: stacklist.join('\n'),
     };
   }
-
   return undefined;
 };
 
@@ -50,9 +48,6 @@ const formatLogArguments = (args) => {
     if (typeof args[0] === 'string') {
       // handle string
       newArgs[0] = `${newArgs[0]} ${calleeStr}`;
-    } else if (Array.isArray(args[0])) {
-      // handle array
-      newArgs[0].unshift(calleeStr);
     } else if (typeof args[0] === 'object') {
       // handle error object
       newArgs[0].message = `${newArgs[0].message} ${calleeStr}`;
@@ -91,10 +86,6 @@ logger.exitOnError = false;
 
 export function info() {
   logger.info(...formatLogArguments(arguments));
-}
-
-export function debug() {
-  logger.debug(...formatLogArguments(arguments));
 }
 
 export function error() {

@@ -33,15 +33,9 @@ export default async (req, res, next) => {
     return next();
   } catch (err) {
     error(err);
-
-    return err.name === 'ValidationError'
-      ? res.status(400).json({
-        status: 400,
-        errors: err.errors,
-      })
-      : res.status(500).json({
-        status: 500,
-        error: err.message,
-      });
+    return res.status(400).json({
+      status: 400,
+      errors: err.errors,
+    });
   }
 };

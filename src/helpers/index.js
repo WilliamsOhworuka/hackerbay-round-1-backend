@@ -3,7 +3,7 @@ import { loginSchema, thumbnailSchema } from './validationSchema';
 import getToken from './getToken';
 import checkMime from './checkUrl';
 import logger, {
-  log, info, verbose, warn, debug, error,
+  info, error,
 } from './logger';
 
 export default {
@@ -12,11 +12,7 @@ export default {
   loginSchema,
   thumbnailSchema,
   logger,
-  log,
   info,
-  verbose,
-  warn,
-  debug,
   error,
   checkMime,
 };
