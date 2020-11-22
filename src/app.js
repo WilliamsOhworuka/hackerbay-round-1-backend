@@ -1,4 +1,4 @@
-import express, { json } from 'express';
+import express, { json, urlencoded } from 'express';
 import dotenv from 'dotenv';
 import routes from './routes';
 import helpers from './helpers';
@@ -13,12 +13,9 @@ const app = express();
 
 const { info } = helpers;
 
-// middleware to retrieve uploaded image
-// app.use(express.static(`${__dirname}/uploads/avatar`));
-// app.use(express.static(`${__dirname}/invoices/debitnotes`));
-
 // Initializing bodyparser
 app.use(json());
+app.use(urlencoded({ extended: true }));
 
 // load all routes
 app.use(routes);
