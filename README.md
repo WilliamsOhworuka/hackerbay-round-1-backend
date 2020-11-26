@@ -6,7 +6,7 @@
 - Clone this repo to your local machine
 - Change into the project directory and run `npm install`.
 - Create a .env file in the root directory and follow the format used in the .env.example file,
-  replace the values of the keys with your choice of values e.g `PORT=2333 HOST=localhost SECRET=mysecret`
+  replace the values of the keys with your choice of values e.g `PORT=2333 HOST=localhost JWT_SECRET=mysecret`
 - Start the server by running `npm start` on the console. The server will be running on what ever localhost:<PORT> PORT is the value you set in the enviroment variable.
 - You run the test by running `npm test`
 
